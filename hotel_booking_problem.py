@@ -123,6 +123,36 @@ def best_fit(sigma_A, sigma_S, sigma_t, seq):
             accept_list.append((i,tmp_list[0]))
     return accept_list 
 
+def my_fit(sigma_A, sigma_S, sigma_t, seq):
+    sigma_t = merge_sort(sigma_t, lambda x: -seq[x][3])
+    sigma_t = merge_sort(sigma_t, lambda x: seq[x][2])
+    
+    accept_list = []
+    for i in sigma_t:
+        tmp_list = []
+        
+        occupied_space_list = []
+        for j in range(n_rooms):
+            
+            collide = False
+            occupied = sigma_A + accept_list
+            occupied_j = [s for s in occupied if s[1] == j]
+            
+            occupied_space = 0
+            for ci_ri in occupied_j:
+                occupied_space += seq[ci_ri[0]][4]
+            occupied_space_list.append(occupied_space)
+            
+            for k in occupied_j:
+                if not(seq[k[0]][2]>=seq[i][3] or seq[k[0]][3]<=seq[i][2]):
+                    collide = True 
+            if not collide:
+                tmp_list.append(j)
+        if tmp_list:
+            tmp_list = merge_sort(tmp_list, lambda ri: occupied_space_list[ri])
+            accept_list.append((i,tmp_list[0]))
+    return accept_list 
+
 def hotel_booking(request_seq, algo):
     sigma_t = []
     sigma_A = []
@@ -203,10 +233,16 @@ sigma_A, sigma_S = hotel_booking(request_seq, first_fit)
 print("printing summary of first fit...")
 print_sigmas(sigma_A,sigma_S,n_rooms, request_seq)
 
-print("running first fit algorithm...")
+print("running best fit algorithm...")
 sigma_A, sigma_S = hotel_booking(request_seq, best_fit)
 
 print("printing summary of best fit...")
+print_sigmas(sigma_A,sigma_S,n_rooms, request_seq)
+
+print("running my fit algorithm...")
+sigma_A, sigma_S = hotel_booking(request_seq, my_fit)
+
+print("printing summary of my fit...")
 print_sigmas(sigma_A,sigma_S,n_rooms, request_seq)
 
 
