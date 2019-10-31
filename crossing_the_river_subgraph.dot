@@ -1,0 +1,48 @@
+digraph finite_state_machine {
+	node [shape = invtriangle]; " ";
+	node [shape = doublecircle]; "|CGPW";
+	node [shape = circle];
+	" " -> "CGPW|";
+	"CGPW|" -> "CW|GP" [ label = "G" ];
+	
+	
+	"CGP|W" -> "G|CPW" [ label = "C" ];
+	"CGP|W" -> "C|GPW" [ label = "G" ];
+
+
+
+	"CPW|G" -> "CW|GP" [ label = "λ" ];
+	"CPW|G" -> "W|CGP" [ label = "C" ];
+	"CPW|G" -> "C|GPW" [ label = "W" ];
+
+
+	"CW|GP" -> "CPW|G" [ label = "λ" ];
+	"CW|GP" -> "CGPW|" [ label = "G" ];
+
+	"C|GPW" -> "CGP|W" [ label = "G" ];
+	"C|GPW" -> "CPW|G" [ label = "W" ];
+
+	"GPW|C" -> "W|CGP" [ label = "G" ];
+	"GPW|C" -> "G|CPW" [ label = "W" ];
+
+	"GP|CW" -> "G|CPW" [ label = "λ" ];
+	"GP|CW" -> "|CGPW" [ label = "G" ];
+
+
+	"G|CPW" -> "GP|CW" [ label = "λ" ];
+	"G|CPW" -> "CGP|W" [ label = "C" ];
+	"G|CPW" -> "GPW|C" [ label = "W" ];
+
+
+
+	"W|CGP" -> "CPW|G" [ label = "C" ];
+	"W|CGP" -> "GPW|C" [ label = "G" ];
+
+	"|CGPW" -> "GP|CW" [ label = "G" ];
+
+
+
+
+
+	}
+
