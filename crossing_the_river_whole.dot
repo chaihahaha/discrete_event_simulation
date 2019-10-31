@@ -1,0 +1,123 @@
+digraph finite_state_machine {
+	node [shape = invtriangle]; " ";
+	node [shape = doublecircle]; "|CGPW";
+	node [shape = circle];
+	" " -> "CGPW|";
+	"CGPW|" -> "GW|CP" [ label = "C" ];
+	"CGPW|" -> "CW|GP" [ label = "G" ];
+	"CGPW|" -> "CG|PW" [ label = "W" ];
+	"CGPW|" -> "CGW|P" [ label = "λ" ];
+	
+	
+	"CGP|W" -> "G|CPW" [ label = "C" ];
+	"CGP|W" -> "C|GPW" [ label = "G" ];
+	"CGP|W" -> "CG|PW" [ label = "λ" ];
+
+	"CGW|P" -> "GW|P" [ label = "-C" ];
+
+	"CG|PW" -> "G|PW" [ label = "-C" ];
+
+	"CPW|G" -> "CW|GP" [ label = "λ" ];
+	"CPW|G" -> "W|CGP" [ label = "C" ];
+	"CPW|G" -> "C|GPW" [ label = "W" ];
+
+	"CP|GW" -> "CP|W" [ label = "-G" ];
+
+	"CW|GP" -> "CPW|G" [ label = "λ" ];
+	"CW|GP" -> "CGPW|" [ label = "G" ];
+
+	"C|GPW" -> "CP|GW" [ label = "λ" ];
+	"C|GPW" -> "CGP|W" [ label = "G" ];
+	"C|GPW" -> "CPW|G" [ label = "W" ];
+
+	"GPW|C" -> "GW|CP" [ label = "λ" ];
+	"GPW|C" -> "W|CGP" [ label = "G" ];
+	"GPW|C" -> "G|CPW" [ label = "W" ];
+
+	"GP|CW" -> "G|CPW" [ label = "λ" ];
+	"GP|CW" -> "|CGPW" [ label = "G" ];
+
+	"GW|CP" -> "W|CP" [ label = "-G" ];
+
+	"G|CPW" -> "GP|CW" [ label = "λ" ];
+	"G|CPW" -> "CGP|W" [ label = "C" ];
+	"G|CPW" -> "GPW|C" [ label = "W" ];
+
+	"PW|CG" -> "PW|G" [ label = "-C" ];
+
+	"P|CGW" -> "P|GW" [ label = "-C" ];
+
+	"W|CGP" -> "PW|CG" [ label = "λ" ];
+	"W|CGP" -> "CPW|G" [ label = "C" ];
+	"W|CGP" -> "GPW|C" [ label = "G" ];
+
+	"|CGPW" -> "P|CGW" [ label = "λ" ];
+	"|CGPW" -> "CP|GW" [ label = "C" ];
+	"|CGPW" -> "GP|CW" [ label = "G" ];
+	"|CGPW" -> "PW|CG" [ label = "W" ];
+
+
+	"GPW|" -> "GW|P" [ label = "λ" ];
+	"GPW|" -> "W|GP" [ label = "G" ];
+	"GPW|" -> "G|PW" [ label = "W" ];
+
+	"GP|W" -> "G|PW" [ label = "λ" ];
+	"GP|W" -> "|GPW" [ label = "G" ];
+
+	"GW|P" -> "W|P" [ label = "-G" ];
+
+	"G|PW" -> "GP|W" [ label = "λ" ];	
+	"G|PW" -> "GPW|" [ label = "W" ];	
+
+	"PW|G" -> "W|GP" [ label = "λ" ];
+	"PW|G" -> "|GPW" [ label = "W" ];
+
+	"P|GW" -> "P|W" [ label = "-G" ];
+
+	"W|GP" -> "PW|G" [ label = "λ" ];
+	"W|GP" -> "GPW|" [ label = "G" ];
+
+	"|GPW" -> "P|GW" [ label = "λ" ];
+	"|GPW" -> "GP|W" [ label = "G" ];
+	"|GPW" -> "PW|G" [ label = "W" ];
+
+	
+	"CPW|" -> "CW|P" [ label = "λ" ];
+	"CPW|" -> "W|CP" [ label = "C" ];
+	"CPW|" -> "C|PW" [ label = "W" ];
+
+	"CP|W" -> "C|PW" [ label = "λ" ];
+	"CP|W" -> "|CPW" [ label = "C" ];
+
+	"CW|P" -> "CPW|" [ label = "λ" ];
+
+	"C|PW" -> "CP|W" [ label = "λ" ];
+	"C|PW" -> "CPW|" [ label = "W" ];
+
+	"PW|C" -> "W|CP" [ label = "λ" ];	
+	"PW|C" -> "|CPW" [ label = "W" ];	
+	
+	"P|CW" -> "|CPW" [ label = "λ" ];
+
+	"W|CP" -> "PW|C" [ label = "λ" ];
+	"W|CP" -> "CPW|" [ label = "C" ];
+
+	"|CPW" -> "P|CW" [ label = "λ" ];
+	"|CPW" -> "CP|W" [ label = "C" ];
+	"|CPW" -> "PW|C" [ label = "W" ];
+
+
+	"PW|" -> "W|P" [ label = "λ" ];
+	"PW|" -> "|PW" [ label = "W" ];
+
+	"P|W" -> "|PW" [ label = "λ" ];
+
+	"W|P" -> "PW|" [ label = "λ" ];
+
+	"|PW" -> "P|W" [ label = "λ" ];
+	"|PW" -> "PW|" [ label = "W" ];
+
+
+
+	}
+
